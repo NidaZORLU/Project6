@@ -1,6 +1,7 @@
 @import "base/variables";
 @import "base/mixin";
 @import "base/reset";
+@import "typography/fonts";
 .box{
 @include transitionEffects(0.4s);
   @include borderRadius(10px);

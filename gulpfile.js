@@ -1,4 +1,3 @@
-'use strict';
 const {
     src,
     dest,
@@ -16,6 +15,8 @@ const browsersync = require('browser-sync').create();
 const del = require('del')
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+
+
 const dist = './dist'
 const source = './src';
 
