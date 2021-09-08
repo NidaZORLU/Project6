@@ -1,0 +1,20 @@
+//Mixins
+@mixin transitionEffect($par){
+  transition: $par all;
+  -webkit-transition: $par all;
+  -moz-transition: $par all;
+  -ms-transition: $par all;
+  -o-transition: $par all;
+}
+@mixin borderRadius($par){
+  border-radius: $par;
+  -webkit-transition: $par;
+  -moz-transition: $par ;
+  -ms-transition: $par;
+  -o-transition: $par;
+}
+@mixin centerFlex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

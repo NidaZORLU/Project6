@@ -1,3 +1,4 @@
+'use strict';
 const {
     src,
     dest,
@@ -47,22 +48,16 @@ function css() {
 }
 
 
-function img() {
-    return src(source + '/assets/img/*')
-        //.pipe(imagemin())
-        .pipe(dest(dist + '/assets/img'));
-}
+
 
 function htmlfiles() {
     return src(source + '/index.html')
-        //.pipe(imagemin())
         .pipe(dest(dist));
 }
 
 function watchFiles() {
     watch(source + '/assets/css/style.css', css);
     watch(source + '/asset/js/script.js', js);
-    watch('/assets/img', img);
     watch(source + '/index.html', htmlfiles)
 }
 
@@ -82,7 +77,7 @@ gulp.task('sass', ()=> {
 gulp.task('watch', () =>{
     gulp.watch('/assets/sass/**/*.scss', gulp.series('sass'));
 });
-gulp.task('default', gulp.series('watch'));
+ gulp.task('default', gulp.series('watch'));
 
-exports.watch = series(js, css, img, htmlfiles, parallel(watchFiles, browserSync));
-exports.default = series(clean, parallel(js, css, img, htmlfiles));
+exports.watch = series(js, css, htmlfiles, parallel(watchFiles, browserSync));
+exports.default = series(clean, parallel(js, css, htmlfiles,));
