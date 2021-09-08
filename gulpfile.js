@@ -13,7 +13,8 @@ const concat = require('gulp-concat');
 const changed = require('gulp-changed');
 const browsersync = require('browser-sync').create();
 const del = require('del')
-
+const gulp = require('gulp');
+const sass = require('gulp-sass');
 const dist = './dist'
 const source = './src';
 
@@ -74,6 +75,14 @@ function browserSync() {
         port: 3000
     });
 }
+gulp.task('sass', ()=> {
+    return
+    gulp.src('/assets/sass/style.scss').pipe(sass()).pipe(gulp.dest('assets/css'));
+});
+gulp.task('watch', () =>{
+    gulp.watch('/assets/sass/**/*.scss', gulp.series('sass'));
+});
+gulp.task('default', gulp.series('watch'));
 
 exports.watch = series(js, css, img, htmlfiles, parallel(watchFiles, browserSync));
 exports.default = series(clean, parallel(js, css, img, htmlfiles));
